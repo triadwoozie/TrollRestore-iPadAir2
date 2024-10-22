@@ -1,41 +1,79 @@
-# TrollRestore
-TrollRestore is a TrollStore installer for iOS/iPadOS 15.2 - 16.7 RC (20H18) and 17.0. It will replace a system app of your choice with a TrollHelper binary, which you can then open and use to install TrollStore. TrollRestore makes use of backups in order to restore the binary to a system app container. 
+# Installing TrollStore (TrollRestore) on iPad Air 2
 
-A guide for installing TrollStore using TrollRestore can be found [here](https://ios.cfw.guide/installing-trollstore-trollrestore).
+## Prerequisites
 
-# Usage
-To run the script, clone this repository and run the following commands:
-```sh
-pip install -r requirements.txt
-python3 trollstore.py
-```
+- iPad Air 2 running iPadOS 15.2 or later
+- Latest version of Python 3 installed
+- Latest version of iTunes (for Windows users)
+- The appropriate TrollRestore version for your platform:
+  - **Windows**: `TrollRestore.exe`
+  - **Apple Silicon Macs**: `TrollRestore_macOS_arm64.zip`
+  - **Intel-based Macs**: `TrollRestore_macOS_amd64.zip`
+  - **Linux**: `TrollRestore_Linux.zip`
 
-# Post-installation
-TrollRestore does not restore a proper persistence helper - it simply replaces the main binary of a system app with an embedded TrollHelper. Thus, after installing TrollStore, it is recommended to install a persistence helper (you can use the same app used with TrollRestore as your persistence helper). Due to the nature of the installer (and its use of backups), the only way to restore your chosen app to it's original state is to delete it and re-install the app from the App Store.
+> **Note:** If you’re using macOS or Linux, extract the downloaded TrollRestore `.zip` file before continuing.
 
-# iOS Version Support
-As stated above, this installer supports iOS/iPadOS 15.2 - 16.7 RC (20H18) and 17.0. 
+Make sure to disable **Find My** before proceeding, as this method uses a modified backup. You can re-enable **Find My** after installation is complete.
 
-Note: All 4 versions of iOS 17.0 are supported: 21A326/21A327/21A329/21A331
+---
 
-It should theoretically support iOS 14 and iOS 15.0 - 15.1.1, but during our testing, we experienced issues restoring the backup to an iOS 14 device, and later also found the same issues with devices on iOS 15.0 - 15.1.1. Therefore, using TrollRestore on a device below iOS 15 has been disabled for the time being.
+## Installation Instructions
 
-Note: It's not currently disabled for 15.0 - 15.1.1, due to these issues not being discovered until after TrollRestore released.
+### macOS/Windows
 
-# Computer Requirements
-To use the precompiled builds, you will either need:
+1. Connect your iPad to your computer and ensure it’s trusted to allow file access.
+2. Open **File Explorer** (Windows) or **Finder** (macOS) and navigate to the TrollRestore file (usually in your **Downloads** folder).
+3. Double-click the TrollRestore file to run it.
+   - **Intel Mac Users**: If the file is not notarized, either hold **Control** while double-clicking or attempt to open it normally, then go to **System Settings > Privacy & Security** and select **Open Anyway**.
+4. When prompted, enter the name of a system app to overwrite and press **Enter**.
+   - If unsure, overwrite the **Reminders** app by typing `Reminders`.
 
-macOS: A Mac with macOS 11 (Big Sur) or higher.
+Once the process starts, there will be no on-device feedback, but your iPad will reboot automatically once it’s done.
 
-Windows: A PC running Windows 10 or higher. iTunes must be installed.
+---
 
-# Need Help?
-If you run into any issues during the installation, you can get support on the [r/Jailbreak Discord server](https://discord.gg/jb).
+### Linux
 
-# Credits
-* [JJTech](https://github.com/JJTech0130) - Sparserestore (the main library used to restore the TrollHelper binary)
-* [Nathan](https://github.com/verygenericname) - Turning sparserestore into a TrollStore installer
-* [Mike](https://github.com/TheMasterOfMike), [Dhinak G](https://github.com/dhinakg) - Various improvements to the installer
-* [doronz88](https://github.com/doronz88) - pymobiledevice3
-* [opa334](https://github.com/opa334), [Alfie](https://github.com/alfiecg24) - TrollStore
-* [Aaronp613](https://x.com/aaronp613) - Minor improvements
+If you’re using Linux or prefer using the Linux method on other platforms, follow these steps:
+
+#### Install Dependencies
+
+1. Open a terminal on your computer.
+2. Navigate to the TrollRestore folder by running:
+   ```bash
+   cd ~/Downloads/TrollRestore_Linux
+   ```
+3. Install the necessary dependencies by running:
+   ```bash
+   pip3 install -r requirements.txt
+   ```
+   Follow the instructions in the terminal to complete the installation.
+
+#### Run TrollRestore
+
+1. Connect your iPad to your computer and ensure it’s trusted.
+2. In the terminal, run:
+   ```bash
+   python3 trollstore.py
+   ```
+3. When prompted, enter the name of a system app to overwrite and press **Enter**.
+   - If unsure, overwrite the **Reminders** app by entering `Reminders`.
+
+As with other platforms, there will be no visual indication during the process, and your device will reboot once the TrollStore Helper is restored.
+
+---
+
+## Final Steps
+
+1. After your device reboots, unlock it and open the app you chose to overwrite (e.g., **Reminders**).
+2. Tap **Install TrollStore** within the app.
+
+Your device will respring, and TrollStore will be installed.
+
+### Installing Persistence Helper
+
+1. Open the **TrollStore** app from your home screen.
+2. Go to **Settings** and select **Install Persistence Helper**.
+3. Choose **Reminders** from the list of apps.
+
+At this point, TrollStore and the Persistence Helper should be fully installed on your iPad Air 2.
